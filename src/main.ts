@@ -1,6 +1,29 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-
-createApp(App).use(store).use(router).mount("#app");
+import { createApp, App } from 'vue'
+import rootApp from './App.vue'
+import router from './router'
+import store from './store'
+import "normalize.css"//清除默认样式
+import "./assets/css/index.less"
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import hyRequest from './service'
+import { registerComponents } from '@/components/globalComponents/index'
+const app: App = createApp(rootApp)
+app.use(store)
+app.use(registerComponents) //调用函数会自动传入app
+app.use(router)
+app.use(ElementPlus)
+app.mount('#app')
+interface datatype{
+  data:any
+  returnCode:string
+  success:boolean
+}
+hyRequest.get<datatype>({
+  url:'/home/multidata',
+  method:'get',
+}).then((res)=>{
+  console.log('1111');
+  console.log(res);
+  console.log('12a')
+})
