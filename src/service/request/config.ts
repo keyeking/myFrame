@@ -7,4 +7,3 @@ if (process.env.NODE_ENV == 'development') {
 } else {
   BASE_URL = 'https://httpbin.org/test'
 }
-

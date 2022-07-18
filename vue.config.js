@@ -1,6 +1,6 @@
-const { defineConfig } = require('@vue/cli-service');
+const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  lintOnSave: false,//关闭语法检查
+  lintOnSave: false, //关闭语法检查
   transpileDependencies: true,
   outputDir: '.build', //输出文件名
   configureWebpack: {
@@ -10,4 +10,4 @@ module.exports = defineConfig({
       },
     },
   },
-});
+})

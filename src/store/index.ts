@@ -1,13 +1,16 @@
-import { createStore } from 'vuex';
-
+import { createStore } from 'vuex'
+import state from './state'
+import actions from './actions'
+import mutations from './mutations'
+import getters from './getters'
+import loginModule from './modules/login'
 export default createStore({
-  state: () => {
-    return {
-      name: 'tom',
-    };
+  state,
+  getters,
+  mutations,
+  actions,
+  // 分出登录模块
+  modules: {
+    loginModule,
   },
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+})

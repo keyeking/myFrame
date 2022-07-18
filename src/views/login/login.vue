@@ -1,27 +1,26 @@
 <template>
-  <div class="login">
-  login
-  </div>
+  <div class="login"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name:'login',
+  name: 'login',
   setup() {
-    return {};
+    return {}
   },
-});
+})
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="less">
 .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 500px;
   height: 100%;
-  background: url('../../assets/img/login-bg.svg');
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  opacity: 0.3;
+  background: rgba(79, 79, 79, 0.5);
 }
 </style>
