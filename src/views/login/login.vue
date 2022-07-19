@@ -1,11 +1,16 @@
 <template>
-  <div class="login"></div>
+  <div class="login">
+    <loginFragment />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import loginFragment from './loginFragment.vue'
 export default defineComponent({
+  components: {
+    loginFragment,
+  },
   name: 'login',
   setup() {
     return {}
@@ -15,12 +20,10 @@ export default defineComponent({
 
 <style scoped lang="less">
 .login {
-  width: 500px;
+  width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
-  opacity: 0.3;
-  background: rgba(79, 79, 79, 0.5);
+  position: relative;
+  background: url('@/assets/img/login-bg.png') no-repeat;
+  background-size: 70%;
 }
 </style>

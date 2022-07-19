@@ -10,7 +10,5 @@
   min-height: 100%;
   max-width: 100%;
   max-height: 100%;
-  background: url('@/assets/img/login-bg.png') no-repeat;
-  background-size: 70%;
 }
 </style>
