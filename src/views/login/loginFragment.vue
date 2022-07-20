@@ -120,7 +120,6 @@ export default defineComponent({
     const username = ref('')
     const password = ref('')
     const login = () => {
-      const localStorage = new globalProperties.$utils.localStorage()
       interface dataType {
         username: string
         password: string
@@ -129,7 +128,8 @@ export default defineComponent({
         username: username.value,
         password: password.value,
       }
-      localStorage.set(data)
+      // globalProperties.$utils.localStorage.get('username')
+      globalProperties.$utils.time.formatDate('0')
     }
     return {
       username,
