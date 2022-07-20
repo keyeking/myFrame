@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosInstance } from 'axios'
 import type { MYRequestInterceptors, MYRequestConfig } from './requestType'
 import { ElLoading } from 'element-plus'
 import type { LoadingOptionsResolved } from 'element-plus/lib/components/loading/src/types'

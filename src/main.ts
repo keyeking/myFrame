@@ -10,9 +10,11 @@ import myRequest from './service'
 import echarts from 'echarts'
 import './assets/iconfont/iconfont.css'
 import { registerComponents } from '@/components/globalComponents/index'
+import utils from './utils'
 const app: App = createApp(rootApp)
 app.config.globalProperties.$http = myRequest
 app.config.globalProperties.$echarts = echarts
+app.config.globalProperties.$utils = utils
 app.use(store)
 app.use(registerComponents) //调用函数会自动传入app
 app.use(router)

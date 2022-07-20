@@ -5,6 +5,56 @@
       <el-tab-pane>
         <template #label>
           <span class="custom-tabs-label tab">
+            <span class="iconfont icon-account_pwd icon"></span>
+            <span>账号密码登录</span>
+          </span>
+        </template>
+        <div class="vertify">
+          <el-row :gutter="2" justify="end" align="middle">
+            <el-col :span="6" :push="1"
+              ><span class="main-font-size">手机号</span></el-col
+            >
+            <el-col :span="18" :pull="1">
+              <el-input
+                type="primary"
+                size="large"
+                placeholder="请输入手机号"
+                v-model="username"
+              ></el-input>
+            </el-col>
+          </el-row>
+          <el-row :gutter="2" justify="end" align="middle">
+            <el-col :span="6" :push="1"
+              ><span class="main-font-size">密码</span></el-col
+            >
+            <el-col :span="18" :pull="1">
+              <el-input
+                type="primary"
+                size="large"
+                placeholder="请输入密码"
+                v-model="password"
+              ></el-input>
+            </el-col>
+            <el-col :span="6"> </el-col>
+          </el-row>
+          <el-row :gutter="2" justify="center" align="middle">
+            <el-col :span="2"></el-col>
+            <el-col :span="6">
+              <el-button
+                class="loading-btn"
+                type="primary"
+                size="large"
+                @click="login"
+                >登录</el-button
+              >
+            </el-col>
+            <el-col :span="10"></el-col>
+          </el-row>
+        </div>
+      </el-tab-pane>
+      <el-tab-pane>
+        <template #label>
+          <span class="custom-tabs-label tab">
             <span class="iconfont icon-yanzhengma icon"></span>
             <span class="main-font-size">验证码登录</span>
           </span>
@@ -51,61 +101,41 @@
           </el-row>
         </div>
       </el-tab-pane>
-      <el-tab-pane>
-        <template #label>
-          <span class="custom-tabs-label tab">
-            <span class="iconfont icon-account_pwd icon"></span>
-            <span>账号密码登录</span>
-          </span>
-        </template>
-        <div class="vertify">
-          <el-row :gutter="2" justify="end" align="middle">
-            <el-col :span="6" :push="1"
-              ><span class="main-font-size">手机号</span></el-col
-            >
-            <el-col :span="18" :pull="1">
-              <el-input
-                type="primary"
-                size="large"
-                placeholder="请输入手机号"
-              ></el-input>
-            </el-col>
-          </el-row>
-          <el-row :gutter="2" justify="end" align="middle">
-            <el-col :span="6" :push="1"
-              ><span class="main-font-size">密码</span></el-col
-            >
-            <el-col :span="18" :pull="1">
-              <el-input
-                type="primary"
-                size="large"
-                placeholder="请输入密码"
-              ></el-input>
-            </el-col>
-            <el-col :span="6"> </el-col>
-          </el-row>
-          <el-row :gutter="2" justify="center" align="middle">
-            <el-col :span="2"></el-col>
-            <el-col :span="6">
-              <el-button class="loading-btn" type="primary" size="large"
-                >登录</el-button
-              >
-            </el-col>
-            <el-col :span="10"></el-col>
-          </el-row>
-        </div>
-      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, ref, getCurrentInstance } from 'vue'
 
 export default defineComponent({
   name: 'loginFragment',
-  setup() {
-    return {}
+  setup(props, context) {
+    const {
+      appContext: {
+        config: { globalProperties },
+      },
+    } = getCurrentInstance() as any
+
+    const username = ref('')
+    const password = ref('')
+    const login = () => {
+      const localStorage = new globalProperties.$utils.localStorage()
+      interface dataType {
+        username: string
+        password: string
+      }
+      let data: dataType = {
+        username: username.value,
+        password: password.value,
+      }
+      localStorage.set(data)
+    }
+    return {
+      username,
+      password,
+      login,
+    }
   },
 })
 </script>
