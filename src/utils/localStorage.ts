@@ -1,9 +1,9 @@
+import timeFunction from './time'
 const storage: Storage = window.localStorage
-let timer: number = 100000 //设置的到期时间
+let timer: number = 0 //设置的到期时间戳
 let setTime: number = 0 //存储的时间
 // 存储
 function set(data: any, time: number): void {
-  timer = time
   const keys: string[] = Object.keys(data)
   const values: string[] = Object.values(data)
   keys.forEach((item: string, index: number) => {
@@ -11,12 +11,17 @@ function set(data: any, time: number): void {
     const value: string = values[index] ? values[index] : ''
     storage.setItem(key, value)
   })
+  // 获取存储的时间
   setTime = new Date().getTime()
+  //获取自定义过期的时间的时间戳
+  const endTime: Date = new Date(timeFunction.getTimeEnd(time))
+  timer = endTime.getTime()
 }
 // 获取
 function get(data: string) {
   const getTime: number = new Date().getTime()
   if (getTime - setTime > timer) {
+    // 时间到期了，清除
     clear()
     return undefined
   } else {

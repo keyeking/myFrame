@@ -128,8 +128,7 @@ export default defineComponent({
         username: username.value,
         password: password.value,
       }
-      // globalProperties.$utils.localStorage.get('username')
-      globalProperties.$utils.time.formatDate('0')
+      globalProperties.$utils.localStorage.set(data, 10)
     }
     return {
       username,

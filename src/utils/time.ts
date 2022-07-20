@@ -77,7 +77,20 @@ const formatDate = (dateParams: Date, fmt: string) => {
   // }
   return fmt
 }
-
+/*获取当前时间之后的10天时间*/
+const getTimeEnd = (data: number = 10): string => {
+  const time: number = data
+  const nowDateObj: Date = new Date()
+  const nowTimeStem: number = nowDateObj.getTime()
+  const endTimeStem: number = nowTimeStem + 24 * 60 * 60 * 1000 * data
+  const endDateObj: Date = new Date(endTimeStem)
+  let month: string | number = endDateObj.getMonth() + 1
+  month = month > 10 ? month : '0' + month
+  let day: string | number = endDateObj.getDate()
+  day = day > 10 ? day : '0' + day
+  const endDateStr: string = endDateObj.getFullYear() + '-' + month + '-' + day
+  return endDateStr
+}
 /* 一位数两位数转换 */
 const padLeftZero = (str: string): string => {
   return ('00' + str).substr(str.length)
@@ -284,6 +297,7 @@ const ajaxDebounce = (fn: any, time: any) => {
 
 const time = {
   formatDate,
+  getTimeEnd,
   getFormatTime,
   getWeek,
   checkoutPhoneNum,
