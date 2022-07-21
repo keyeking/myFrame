@@ -1,4 +1,4 @@
-# my
+# myFrame
 
 ## Project setup
 
