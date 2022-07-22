@@ -9,7 +9,7 @@ export default createStore({
   getters,
   mutations,
   actions,
-  // 分出登录模块
+  // 分出模块
   modules: {
     loginModule,
   },

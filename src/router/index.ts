@@ -5,8 +5,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
-// router.beforeEach((to: VueRouter.RouteLocationNormalized) => {
-//   const token = localStorage.get('username')
-//   console.log(token)
-// })
+router.beforeEach((to) => {
+  const username = localStorage.get('username')
+
+  if (username == 'admin' && to.path == '/login') {
+    return '/home'
+  }
+})
 export default router
