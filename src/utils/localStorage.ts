@@ -1,6 +1,6 @@
 import timeFunction from './time'
 const storage: Storage = window.localStorage
-let timer: number = 0 //设置的到期时间戳
+let endTime: number = 0 //设置的到期时间戳
 let setTime: number = 0 //存储的时间
 // 存储
 function set(data: any, time: number): void {
@@ -14,13 +14,14 @@ function set(data: any, time: number): void {
   // 获取存储的时间
   setTime = new Date().getTime()
   //获取自定义过期的时间的时间戳
-  const endTime: Date = new Date(timeFunction.getTimeEnd(time))
-  timer = endTime.getTime()
+  // 一天的时间戳
+  const stamp: number = 60 * 60 * 24 * 1000
+  endTime = new Date().getTime() + time * stamp
 }
 // 获取
 function get(data: string) {
   const getTime: number = new Date().getTime()
-  if (getTime - setTime > timer) {
+  if (getTime - setTime > endTime) {
     // 时间到期了，清除
     clear()
     return undefined

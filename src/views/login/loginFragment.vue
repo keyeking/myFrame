@@ -106,7 +106,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, getCurrentInstance } from 'vue'
+import { defineComponent, reactive, toRefs, getCurrentInstance } from 'vue'
 
 export default defineComponent({
   name: 'loginFragment',
@@ -116,23 +116,28 @@ export default defineComponent({
         config: { globalProperties },
       },
     } = getCurrentInstance() as any
-
-    const username = ref('')
-    const password = ref('')
+    interface stateType {
+      username: string
+      password: string
+    }
+    const state = reactive<stateType>({
+      username: '',
+      password: '',
+    })
     const login = () => {
       interface dataType {
         username: string
         password: string
       }
       let data: dataType = {
-        username: username.value,
-        password: password.value,
+        username: state.username,
+        password: state.password,
       }
       globalProperties.$utils.localStorage.set(data, 10)
+      globalProperties.$router.push({ name: 'home' })
     }
     return {
-      username,
-      password,
+      ...toRefs(state),
       login,
     }
   },

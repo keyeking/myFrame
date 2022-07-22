@@ -77,20 +77,6 @@ const formatDate = (dateParams: Date, fmt: string) => {
   // }
   return fmt
 }
-/*获取当前时间之后的10天时间*/
-const getTimeEnd = (data: number = 10): string => {
-  const time: number = data
-  const nowDateObj: Date = new Date()
-  const nowTimeStem: number = nowDateObj.getTime()
-  const endTimeStem: number = nowTimeStem + 24 * 60 * 60 * 1000 * data
-  const endDateObj: Date = new Date(endTimeStem)
-  let month: string | number = endDateObj.getMonth() + 1
-  month = month > 10 ? month : '0' + month
-  let day: string | number = endDateObj.getDate()
-  day = day > 10 ? day : '0' + day
-  const endDateStr: string = endDateObj.getFullYear() + '-' + month + '-' + day
-  return endDateStr
-}
 /* 一位数两位数转换 */
 const padLeftZero = (str: string): string => {
   return ('00' + str).substr(str.length)
@@ -178,50 +164,6 @@ const getWeek = (date: number) => {
   return weekDay
 }
 
-//电话号校验
-const checkoutPhoneNum = (phoneNum: string) => {
-  if (/^1[0-9]{7,11}$/.test(phoneNum)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-//单位邮编校验
-const checkoutZipCode = (zipCode: string) => {
-  if (/^[0-9]{6}$/.test(zipCode)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-//单位传真校验
-const checkoutFax = (fax: string) => {
-  if (/^[0-9]{7}$/.test(fax)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-//时间段 val代表小时 如 1 代表一小时 返回开始时间戳，结束时间戳
-const timeStream = (val: number) => {
-  const today = new Date().getTime()
-  const startTime = today - val * 60 * 60 * 1000
-  const endTime = today
-  const timeArr = [startTime, endTime]
-  return timeArr
-}
-
-// 年月日时分秒转时间戳
-const changeTime = (time: any) => {
-  if (time !== null) {
-    const s = Date.parse('1970-01-01 ' + time) / 1000
-    return s
-  }
-}
-
 // 时间戳转时分秒
 const timeChange = (data: any) => {
   const date = new Date(data * 1000)
@@ -283,32 +225,13 @@ const timeToNormalTime = (timestamp: number) => {
   }
 }
 
-/* 請求防抖 */
-//time标识存放容器
-let isTime: any = ''
-const ajaxDebounce = (fn: any, time: any) => {
-  if (isTime) {
-    clearTimeout(isTime)
-  }
-  return (isTime = setTimeout(async () => {
-    await fn()
-  }, time))
-}
-
 const time = {
   formatDate,
-  getTimeEnd,
   getFormatTime,
   getWeek,
-  checkoutPhoneNum,
-  checkoutZipCode,
-  checkoutFax,
-  timeStream,
-  changeTime,
   timeChange,
   getTimeFormat,
   timestampToTime,
   timeToNormalTime,
-  ajaxDebounce,
 }
 export default time
