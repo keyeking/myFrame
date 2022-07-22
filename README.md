@@ -26,4 +26,4 @@ npm run lint
 
 ### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[![OSCS Status](https://www.oscs1024.com/platform/badge/keyeking/myFrame.svg?size=large)](https://www.oscs1024.com/project/keyeking/myFrame?ref=badge_large)
