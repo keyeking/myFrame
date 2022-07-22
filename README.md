@@ -1,4 +1,4 @@
-# myFrame
+# myFrame[![OSCS Status](https://www.oscs1024.com/platform/badge/keyeking/myFrame.svg?size=small)](https://www.oscs1024.com/project/keyeking/myFrame?ref=badge_small)
 
 ## Project setup
 
