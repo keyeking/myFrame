@@ -33,6 +33,7 @@
                 size="large"
                 placeholder="请输入密码"
                 v-model="password"
+                show-password
               ></el-input>
             </el-col>
             <el-col :span="6"> </el-col>
