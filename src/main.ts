@@ -6,14 +6,14 @@ import 'normalize.css' //清除默认样式
 import './assets/css/index.less'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import myRequest from './service'
 import echarts from 'echarts'
 import './assets/iconfont/iconfont.js'
 import './assets/iconfont/iconfont.css'
 import { registerComponents } from '@/components/globalComponents/index'
 import utils from './utils'
+import api from '@/api'
 const app: App = createApp(rootApp)
-app.config.globalProperties.$http = myRequest
+app.config.globalProperties.$api = api
 app.config.globalProperties.$echarts = echarts
 app.config.globalProperties.$utils = utils
 app.use(store)

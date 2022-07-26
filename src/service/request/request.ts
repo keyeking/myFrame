@@ -4,7 +4,7 @@ import type { MYRequestInterceptors, MYRequestConfig } from './requestType'
 import { ElLoading } from 'element-plus'
 import type { LoadingOptionsResolved } from 'element-plus/lib/components/loading/src/types'
 const DEFAULTLoading = true //用户控制是否显示loading
-class HYRequest {
+class MYRequest {
   instance: AxiosInstance
   interceptors?: MYRequestInterceptors
   showLoading: boolean
@@ -97,4 +97,4 @@ class HYRequest {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 }
-export default HYRequest
+export default MYRequest

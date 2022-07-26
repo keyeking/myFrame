@@ -108,6 +108,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, getCurrentInstance } from 'vue'
+import { useStore } from 'vuex'
+import type { Store } from 'vuex'
 
 export default defineComponent({
   name: 'loginFragment',
@@ -117,6 +119,7 @@ export default defineComponent({
         config: { globalProperties },
       },
     } = getCurrentInstance() as any
+    const store: Store<any> = useStore()
     interface stateType {
       username: string
       password: string
@@ -134,8 +137,16 @@ export default defineComponent({
         username: state.username,
         password: state.password,
       }
+      const formData = new FormData()
+      Object.keys(data).forEach((key: string) => {
+        formData.append(key, data[key as keyof typeof data])
+      })
+      globalProperties.$api.login.loginAccount(formData).then((res: any) => {
+        console.log(res)
+      })
+      // globalProperties.$http.
       globalProperties.$utils.localStorage.set(data, 10)
-      globalProperties.$router.push({ name: 'home' })
+      // globalProperties.$router.push({ name: 'home' })
     }
     return {
       ...toRefs(state),
