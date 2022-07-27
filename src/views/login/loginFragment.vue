@@ -141,7 +141,7 @@ export default defineComponent({
       Object.keys(data).forEach((key: string) => {
         formData.append(key, data[key as keyof typeof data])
       })
-      // globalProperties.$api.login.loginAccount(data).then((res: any) => {
+      // globalProperties.$api.login.loginAccount(formData).then((res: any) => {
       //   console.log(res)
       // })
       // globalProperties.$http.

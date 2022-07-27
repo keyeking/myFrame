@@ -1,5 +1,4 @@
 // !(function (a) {
-//   /*eslint no-self-assign: "error"*/
 //   var t,
 //     l,
 //     c,

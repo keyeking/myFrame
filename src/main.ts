@@ -6,6 +6,7 @@ import 'normalize.css' //清除默认样式
 import './assets/css/index.less'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import echarts from 'echarts'
 import './assets/iconfont/iconfont.js'
 import './assets/iconfont/iconfont.css'
