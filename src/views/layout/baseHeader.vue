@@ -85,7 +85,19 @@
                     <svg class="icon" aria-hidden="true">
                       <use xlink:href="#icon-wode"></use>
                     </svg>
-                    <span class="user">admin</span>
+                    <!-- <span class="user">admin</span> -->
+                    <el-dropdown>
+                      <span class="el-dropdown-link user"> admin </span>
+                      <template #dropdown>
+                        <el-dropdown-menu>
+                          <el-dropdown-item
+                            v-for="item in dropdownItem"
+                            :key="item.value"
+                            >{{ item.label }}</el-dropdown-item
+                          >
+                        </el-dropdown-menu>
+                      </template>
+                    </el-dropdown>
                   </span>
                   <span class="out" @click="out">
                     <el-tooltip
@@ -176,6 +188,14 @@ export default defineComponent({
       globalProperties.$utils.localStorage.clear()
       globalProperties.$router.push({ name: 'login' })
     }
+    // 个人
+    interface dropdownItemType {
+      label: string
+      value: number
+    }
+    const dropdownItem: dropdownItemType[] = reactive([
+      { label: '个人中心', value: 0 },
+    ])
     return {
       calendar,
       isTheme,
@@ -185,6 +205,7 @@ export default defineComponent({
       toggleDark,
       activeIndex,
       out,
+      dropdownItem,
     }
   },
 })
@@ -249,6 +270,7 @@ export default defineComponent({
           .user {
             font-size: @header-font-size;
             margin-left: 10px;
+            line-height: 50px;
           }
         }
 

@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 3533230 */
+  font-family: 'iconfont'; /* Project id 3533230 */
   src: url('iconfont.woff2?t=1658901254885') format('woff2'),
-       url('iconfont.woff?t=1658901254885') format('woff'),
-       url('iconfont.ttf?t=1658901254885') format('truetype');
+    url('iconfont.woff?t=1658901254885') format('woff'),
+    url('iconfont.ttf?t=1658901254885') format('truetype');
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
+  font-family: 'iconfont' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -14,38 +14,37 @@
 }
 
 .icon-wode:before {
-  content: "\e62f";
+  content: '\e62f';
 }
 
 .icon-yueliang:before {
-  content: "\e662";
+  content: '\e662';
 }
 
 .icon-tuichu:before {
-  content: "\e7a1";
+  content: '\e7a1';
 }
 
 .icon-icon--date:before {
-  content: "\e612";
+  content: '\e612';
 }
 
 .icon-taiyang:before {
-  content: "\e611";
+  content: '\e611';
 }
 
 .icon-github:before {
-  content: "\ea0b";
+  content: '\ea0b';
 }
 
 .icon-110:before {
-  content: "\e76e";
+  content: '\e76e';
 }
 
 .icon-yanzhengma:before {
-  content: "\e6bf";
+  content: '\e6bf';
 }
 
 .icon-account_pwd:before {
-  content: "\e636";
+  content: '\e636';
 }
-

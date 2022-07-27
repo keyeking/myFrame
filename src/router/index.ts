@@ -7,7 +7,6 @@ const router: VueRouter.Router = createRouter({
 })
 router.beforeEach((to: VueRouter.RouteLocationNormalized) => {
   const username: string | null = localStorage.get('username')
-
   if (username == 'admin' && to.path == '/login') {
     return '/home'
   }

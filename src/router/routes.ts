@@ -1,18 +1,4 @@
 import type { RouteRecordRaw } from 'vue-router'
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: 'login',
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/login.vue'),
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/views/home/home.vue'),
-  },
-]
+import modulesRouter from './modules'
+const routes: Array<RouteRecordRaw> = modulesRouter
 export default routes
