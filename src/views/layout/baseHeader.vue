@@ -27,7 +27,23 @@
                   mode="horizontal"
                   @select="handleSelect"
                 >
-                  <el-menu-item
+                  <template v-for="items in menu" :key="items.value">
+                    <el-menu-item :index="items.value" v-show="!items.children"
+                      ><span>{{ items.label }}</span></el-menu-item
+                    >
+                    <el-sub-menu :index="items.value" v-show="items.children">
+                      <template #title
+                        ><span>{{ items.label }}</span></template
+                      >
+                      <el-menu-item
+                        v-for="item in items.children"
+                        :key="item.value"
+                        :index="item.value"
+                        >{{ item.label }}</el-menu-item
+                      >
+                    </el-sub-menu>
+                  </template>
+                  <!-- <el-menu-item
                     v-for="item in menu"
                     :key="item.value"
                     :index="item.value"
@@ -47,7 +63,7 @@
                       :index="item.value"
                       >{{ item.label }}</el-menu-item
                     >
-                  </el-sub-menu>
+                  </el-sub-menu> -->
                 </el-menu>
               </div></el-col
             >
