@@ -141,12 +141,12 @@ export default defineComponent({
       Object.keys(data).forEach((key: string) => {
         formData.append(key, data[key as keyof typeof data])
       })
-      globalProperties.$api.login.loginAccount(formData).then((res: any) => {
-        console.log(res)
-      })
+      // globalProperties.$api.login.loginAccount(data).then((res: any) => {
+      //   console.log(res)
+      // })
       // globalProperties.$http.
       globalProperties.$utils.localStorage.set(data, 10)
-      // globalProperties.$router.push({ name: 'home' })
+      globalProperties.$router.push({ name: 'home' })
     }
     return {
       ...toRefs(state),
