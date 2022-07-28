@@ -13,6 +13,7 @@ import './assets/iconfont/iconfont.css'
 import { registerComponents } from '@/components/globalComponents/index'
 import utils from './utils'
 import api from '@/api'
+import 'animate.css'
 const app: App = createApp(rootApp)
 app.config.globalProperties.$api = api
 app.config.globalProperties.$echarts = echarts

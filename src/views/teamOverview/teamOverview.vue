@@ -1,5 +1,5 @@
 <template>
-  <div>teamOverview</div>
+  <div class="animate">teamOverview</div>
 </template>
 
 <script lang="ts">
