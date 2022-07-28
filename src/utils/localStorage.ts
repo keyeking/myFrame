@@ -12,9 +12,9 @@ function set(data: any, time: number = 10): void {
   // 一天的时间戳
   const stamp: number = 60 * 60 * 24 * 1000
   endTime = new Date().getTime() + time * stamp
-  keys.push('setTime')
+  // keys.push('setTime')
   values.push(setTime.toString())
-  keys.push('endTime')
+  // keys.push('endTime')
   values.push(endTime.toString())
   keys.forEach((item: string, index: number) => {
     const key: string = keys[index]

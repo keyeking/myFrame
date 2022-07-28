@@ -5,9 +5,9 @@ export default [
     component: () => import('@/layout/baseHeader.vue'),
     children: [
       {
-        path: '/home',
-        name: 'home',
-        component: () => import('@/views/home/home.vue'),
+        path: '/members',
+        name: 'members',
+        component: () => import('@/views/members/members.vue'),
       },
     ],
   },

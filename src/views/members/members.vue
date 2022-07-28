@@ -1,18 +1,16 @@
 <template>
-  <div class="home">home</div>
+  <div>members</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
-  name: 'home',
-  components: {
-    // homeHeader,
-  },
+  name: 'members',
   setup() {
     return {}
   },
 })
 </script>
 
-<style scoped lang="less"></style>
+<style scoped></style>

@@ -23,47 +23,31 @@
               ><div class="header-center">
                 <el-menu
                   :default-active="activeIndex"
+                  :router="true"
                   class="el-menu-demo"
                   mode="horizontal"
                   @select="handleSelect"
                 >
-                  <template v-for="items in menu" :key="items.value">
-                    <el-menu-item :index="items.value" v-show="!items.children"
+                  <template v-for="items in menu" :key="items.path">
+                    <el-menu-item
+                      @click="changeRoute(items)"
+                      :index="items.path"
+                      v-show="!items.children"
                       ><span>{{ items.label }}</span></el-menu-item
                     >
-                    <el-sub-menu :index="items.value" v-show="items.children">
+                    <el-sub-menu :index="items.path" v-show="items.children">
                       <template #title
                         ><span>{{ items.label }}</span></template
                       >
                       <el-menu-item
                         v-for="item in items.children"
-                        :key="item.value"
-                        :index="item.value"
+                        :key="item.path"
+                        :index="item.path"
+                        @click="changeRoute(item)"
                         >{{ item.label }}</el-menu-item
                       >
                     </el-sub-menu>
                   </template>
-                  <!-- <el-menu-item
-                    v-for="item in menu"
-                    :key="item.value"
-                    :index="item.value"
-                    v-show="!item.children"
-                    >{{ item.label }}</el-menu-item
-                  >
-                  <el-sub-menu
-                    v-for="items in menu"
-                    :key="items.value"
-                    :index="items.value"
-                    v-show="items.children"
-                  >
-                    <template #title>{{ items.label }}</template>
-                    <el-menu-item
-                      v-for="item in items.children"
-                      :key="item.value"
-                      :index="item.value"
-                      >{{ item.label }}</el-menu-item
-                    >
-                  </el-sub-menu> -->
                 </el-menu>
               </div></el-col
             >
@@ -101,7 +85,6 @@
                     <svg class="icon" aria-hidden="true">
                       <use xlink:href="#icon-wode"></use>
                     </svg>
-                    <!-- <span class="user">admin</span> -->
                     <el-dropdown>
                       <span class="el-dropdown-link user"> admin </span>
                       <template #dropdown>
@@ -133,6 +116,7 @@
         </div>
       </el-col>
     </el-row>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -143,6 +127,7 @@ import {
   getCurrentInstance,
   ref,
   reactive,
+  onMounted,
 } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
@@ -153,6 +138,11 @@ export default defineComponent({
         config: { globalProperties },
       },
     } = getCurrentInstance() as any
+    onMounted(() => {})
+    // 默认第一个高亮
+    const activeIndex: ComputedRef<string> = computed(() => {
+      return globalProperties.$route.path
+    })
     // 获取今天日期
     const calendar: ComputedRef<string> = computed(() => {
       return globalProperties.$utils.time.formatDate(new Date().getTime(), '1')
@@ -160,24 +150,23 @@ export default defineComponent({
     interface menuType {
       label: string
       value: string
-      name: string
+      path: string
       children?: object
     }
-
     const menu: menuType[] = reactive([
-      { label: '首页', value: '0', name: 'home' },
-      { label: '团队总览', value: '1', name: 'teamOverview' },
+      { label: '首页', value: '0', path: '/home' },
+      { label: '团队总览', value: '1', path: '/teamOverview' },
       {
         label: '业绩分析',
         value: '2',
-        name: 'generalOverview',
+        path: '/overallAnalysis',
         children: [
-          { label: '总体概览', value: '2-1', name: 'generalOverview' },
-          { label: '团队概览', value: '2-2', name: 'teamOverview' },
+          { label: '总体分析', value: '2-1', path: '/overallAnalysis' },
+          { label: '团队分析', value: '2-2', path: '/teamAnalysis' },
         ],
       },
-      { label: '成员分布', value: '3', name: 'Members' },
-      { label: '我的团队', value: '4', name: 'myTeam' },
+      { label: '成员分布', value: '3', path: '/members' },
+      { label: '我的团队', value: '4', path: '/myTeam' },
     ])
     // 定义图标的类型接口
     interface themeIconsType {
@@ -197,8 +186,7 @@ export default defineComponent({
       isTheme.value === 0 ? (isTheme.value = 1) : (isTheme.value = 0)
       toggleDark()
     }
-    // 默认第一个高亮
-    const activeIndex = ref('0')
+
     // 退出
     const out = () => {
       globalProperties.$utils.localStorage.clear()
@@ -212,6 +200,10 @@ export default defineComponent({
     const dropdownItem: dropdownItemType[] = reactive([
       { label: '个人中心', value: 0 },
     ])
+    // 跳转路由
+    const changeRoute = (item: any) => {
+      globalProperties.$router.push({ path: item.path })
+    }
     return {
       calendar,
       isTheme,
@@ -222,6 +214,7 @@ export default defineComponent({
       activeIndex,
       out,
       dropdownItem,
+      changeRoute,
     }
   },
 })
