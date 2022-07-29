@@ -154,7 +154,7 @@ export default defineComponent({
       children?: object
     }
     const menu: menuType[] = reactive([
-      { label: '首页', value: '0', path: '/home' },
+      { label: '整体态势', value: '0', path: '/home' },
       { label: '团队总览', value: '1', path: '/teamOverview' },
       {
         label: '业绩分析',
