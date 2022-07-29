@@ -1,5 +1,5 @@
 <template>
-  <div class="barEcharts">
+  <div class="comprehensiveCard">
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'barEcharts',
+  name: 'comprehensiveCard',
   setup() {
     return {}
   },
@@ -26,7 +26,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.barEcharts {
+.comprehensiveCard {
+  width: 100%;
+  margin-bottom: @margin-bottom;
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -42,7 +44,6 @@ export default {
     }
   }
   .container {
-    width: 100%;
     height: 180px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="barEcharts">
+  <div class="mapCard">
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
@@ -16,17 +16,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'barEcharts',
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'mapCard',
   setup() {
     return {}
   },
-}
+})
 </script>
 
-<style lang="less" scoped>
-.barEcharts {
+<style scoped lang="less">
+.mapCard {
+  width: 100%;
+  margin-bottom: @margin-bottom;
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -42,8 +46,7 @@ export default {
     }
   }
   .container {
-    width: 100%;
-    height: 180px;
+    height: 408px;
   }
 }
 </style>

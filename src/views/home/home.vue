@@ -34,11 +34,9 @@ export default defineComponent({
   }
   .centerCard {
     flex: 6;
-    background: blue;
   }
   .rightCard {
     flex: 3;
-    background: red;
   }
 }
 </style>
