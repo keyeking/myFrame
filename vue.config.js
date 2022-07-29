@@ -1,8 +1,11 @@
 const { defineConfig } = require('@vue/cli-service')
+const path = require('path')
 module.exports = defineConfig({
   lintOnSave: false, //关闭语法检查
   transpileDependencies: true,
-  outputDir: '.build', //输出文件名
+  publicPath: '',
+  outputDir: 'dist',
+  assetsDir: '', //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
   configureWebpack: {
     resolve: {
       alias: {
@@ -17,7 +20,6 @@ module.exports = defineConfig({
         .use('style-resources-loader')
         .loader('style-resources-loader')
         .options({
-          // or an array : ["./path/to/vars.less", "./path/to/mixins.less"] 这里的路径不能使用@，否则会报错
           patterns: './src/assets/css/index.less',
         })
         .end()
