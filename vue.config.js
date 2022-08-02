@@ -2,10 +2,11 @@ const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
 module.exports = defineConfig({
   lintOnSave: false, //关闭语法检查
+  productionSourceMap: false, //生产环境是否要生成 sourceMap
   transpileDependencies: true,
-  publicPath: '',
+  publicPath: './',
   outputDir: 'dist',
-  assetsDir: '', //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
+  assetsDir: 'assets',
   configureWebpack: {
     resolve: {
       alias: {
@@ -13,16 +14,18 @@ module.exports = defineConfig({
       },
     },
   },
+
   chainWebpack: (config) => {
-    const oneOfsMap = config.module.rule('less').oneOfs.store
-    oneOfsMap.forEach((item) => {
-      item
-        .use('style-resources-loader')
+    // 通过 style-resources-loader 来添加less全局变量
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach((type) => {
+      let rule = config.module.rule('less').oneOf(type)
+      rule
+        .use('style-resource')
         .loader('style-resources-loader')
         .options({
-          patterns: './src/assets/css/index.less',
+          patterns: [path.resolve(__dirname, './src/assets/css/index.less')],
         })
-        .end()
     })
   },
 })

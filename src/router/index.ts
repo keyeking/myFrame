@@ -1,8 +1,8 @@
-import VueRouter, { createRouter, createWebHistory } from 'vue-router'
+import VueRouter, { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './routes'
 import localStorage from '@/utils/localStorage'
 const router: VueRouter.Router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 router.beforeEach((to: VueRouter.RouteLocationNormalized) => {
