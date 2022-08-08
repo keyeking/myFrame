@@ -3,7 +3,7 @@
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="header">pieEcharts</span>
+          <span class="header">总收益分布</span>
           <el-button class="btn" text type="primary"
             >详情<span
               ><svg class="icon" aria-hidden="true">
@@ -11,18 +11,37 @@
           ></el-button>
         </div>
       </template>
-      <div class="container"></div>
+      <div id="container"></div>
     </el-card>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
+import { defineComponent, getCurrentInstance, onMounted } from 'vue'
+import pieOption from '../data/pieData'
 export default defineComponent({
   name: 'pieEcharts',
   setup() {
-    return {}
+    const {
+      appContext: {
+        config: { globalProperties },
+      },
+    } = getCurrentInstance() as any
+    onMounted(() => {
+      initEchart()
+    })
+    const initEchart = () => {
+      return new Promise<HTMLElement | null>((resolve, reject) => {
+        const container: HTMLElement | null =
+          document.getElementById('container')
+        resolve(container)
+      }).then((container: HTMLElement | null) => {
+        globalProperties.$echarts.init(container).setOption(pieOption)
+      })
+    }
+    return {
+      initEchart,
+    }
   },
 })
 </script>
@@ -43,7 +62,7 @@ export default defineComponent({
       }
     }
   }
-  .container {
+  #container {
     width: 100%;
     height: 180px;
   }

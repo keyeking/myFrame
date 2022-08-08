@@ -25,3 +25,16 @@ body {
   /* 通用 */
   user-select: none;
 }
+// 隐藏浏览器超出后滚动条
+// 谷歌
+*::-webkit-scrollbar {
+  display: none;
+}
+// 火狐
+* {
+  scrollbar-width: none;
+}
+//edge
+* {
+  -ms-overflow-style: none;
+}

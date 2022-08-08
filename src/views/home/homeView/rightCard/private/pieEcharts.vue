@@ -3,7 +3,7 @@
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="header">pieEcharts</span>
+          <span class="header">饼图</span>
           <el-button class="btn" text type="primary"
             >详情<span
               ><svg class="icon" aria-hidden="true">
