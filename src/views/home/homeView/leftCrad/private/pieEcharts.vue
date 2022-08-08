@@ -3,10 +3,15 @@
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="header">总收益分布</span>
+          <span class="header">
+            <svg class="icon icon-meiguibingtu" aria-hidden="true">
+              <use xlink:href="#icon-meiguibingtu"></use>
+            </svg>
+            总收益分布</span
+          >
           <el-button class="btn" text type="primary"
             >详情<span
-              ><svg class="icon" aria-hidden="true">
+              ><svg class="icon icon-xiangyoujiantou" aria-hidden="true">
                 <use xlink:href="#icon-xiangyoujiantou"></use></svg></span
           ></el-button>
         </div>
@@ -55,8 +60,11 @@ export default defineComponent({
     .header {
       font-size: @main-font-size;
     }
+    .icon-meiguibingtu {
+      font-size: 18px;
+    }
     .btn {
-      .icon {
+      .icon-xiangyoujiantou {
         font-size: 12px;
         color: #409eff;
       }

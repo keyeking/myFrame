@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1983879",
+      "name": "柱状图",
+      "font_class": "zhuzhuangtu",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "23036458",
+      "name": "玫瑰饼图",
+      "font_class": "meiguibingtu",
+      "unicode": "e79e",
+      "unicode_decimal": 59294
+    },
+    {
+      "icon_id": "23036513",
+      "name": "水平柱状图",
+      "font_class": "shuipingzhuzhuangtu",
+      "unicode": "e7a0",
+      "unicode_decimal": 59296
+    },
+    {
+      "icon_id": "24373366",
+      "name": "icon-折线图",
+      "font_class": "icon-zhexiantu",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "30640804",
+      "name": "折线图",
+      "font_class": "zhexiantu",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
+      "icon_id": "3715708",
+      "name": "分布图",
+      "font_class": "fenbutu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "630094",
       "name": "向右箭头",
       "font_class": "xiangyoujiantou",
