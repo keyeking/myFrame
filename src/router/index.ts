@@ -11,12 +11,11 @@ const router: VueRouter.Router = createRouter({
 })
 router.beforeEach((to: VueRouter.RouteLocationNormalized) => {
   const username: string | null = localStorage.get('username')
-  if(!username&&(to.path !== '/login')){
-    return {path:'/login'}
+  if (!username && to.path !== '/login') {
+    return { path: '/login' }
   }
-  // if(username)
   if (username === 'admin' && (to.path == '/login' || to.path == '/')) {
-    return {path:'/home'}
+    return { path: '/home' }
   }
 })
 export default router
