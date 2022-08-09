@@ -1,8 +1,8 @@
 <template>
   <div class="rightCard">
     <pieEcharts class="pieEcharts" />
-    <barEcharts class="barEcharts" />
     <lineEcharts class="lineEcharts" />
+    <barEcharts class="barEcharts" />
   </div>
 </template>
 

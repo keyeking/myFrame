@@ -62,6 +62,7 @@ export default defineComponent({
     }
     .icon-meiguibingtu {
       font-size: 18px;
+      margin-right: 2px;
     }
     .btn {
       .icon-xiangyoujiantou {

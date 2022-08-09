@@ -1,15 +1,17 @@
 const pieOption = {
-  // legend: {
-  //   top: 'bottom',
-  //   icon: "circle", // 修改形状
-  //   itemHeight: 6, // 修改icon图形大小
-  //   itemGap: 2, // 修改间距
-  //   textStyle: {
-  //     fontSize: 12,
-  //     color: "#333",
-  //     padding: [0, 0, 0, -8], // 修改文字和图标距离
-  //   },
-  // },
+  legend: {
+    top: 'bottom',
+    icon: 'circle', // 修改形状
+    itemHeight: 6, // 修改icon图形大小
+    itemGap: 4, // 修改间距
+    orient: 'vertical', //布局方向
+    right: 10,
+    textStyle: {
+      fontSize: 10,
+      color: '#333',
+      padding: [0, 0, 0, -8], // 修改文字和图标距离
+    },
+  },
   tooltip: {
     trigger: 'item',
     formatter: '{b} : {c} ({d}%)',
@@ -25,7 +27,7 @@ const pieOption = {
   },
   series: [
     {
-      name: '前五名排行',
+      name: '各地区收益分布',
       type: 'pie',
       radius: [10, 80],
       center: ['40%', '50%'],

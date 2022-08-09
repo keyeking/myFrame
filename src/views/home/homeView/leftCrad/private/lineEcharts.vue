@@ -3,10 +3,14 @@
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="header">折线图</span>
+          <span class="header"
+            ><svg class="icon icon-icon-zhexiantu" aria-hidden="true">
+              <use xlink:href="#icon-icon-zhexiantu"></use></svg
+            >折线图</span
+          >
           <el-button class="btn" text type="primary"
             >详情<span
-              ><svg class="icon" aria-hidden="true">
+              ><svg class="icon icon-xiangyoujiantou" aria-hidden="true">
                 <use xlink:href="#icon-xiangyoujiantou"></use></svg></span
           ></el-button>
         </div>
@@ -34,8 +38,12 @@ export default {
     .header {
       font-size: @main-font-size;
     }
+    .icon-icon-zhexiantu {
+      font-size: 18px;
+      margin-right: 10px;
+    }
     .btn {
-      .icon {
+      .icon-xiangyoujiantou {
         font-size: 12px;
         color: #409eff;
       }
