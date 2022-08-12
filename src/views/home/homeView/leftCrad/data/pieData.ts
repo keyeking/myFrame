@@ -18,10 +18,11 @@ const pieOption = {
   },
   toolbox: {
     show: true,
+    itemSize: 10,
     feature: {
       mark: { show: true },
-      dataView: { show: true, readOnly: false },
-      restore: { show: true },
+      dataView: { show: true, readOnly: true },
+      restore: { show: false },
       saveAsImage: { show: true },
     },
   },

@@ -16,7 +16,7 @@
           ></el-button>
         </div>
       </template>
-      <div id="container"></div>
+      <div id="left-pie-container"></div>
     </el-card>
   </div>
 </template>
@@ -38,11 +38,15 @@ export default defineComponent({
     const initEchart = () => {
       return new Promise<HTMLElement | null>((resolve, reject) => {
         const container: HTMLElement | null =
-          document.getElementById('container')
+          document.getElementById('left-pie-container')
         resolve(container)
-      }).then((container: HTMLElement | null) => {
-        globalProperties.$echarts.init(container).setOption(pieOption)
       })
+        .then((container: HTMLElement | null) => {
+          globalProperties.$echarts.init(container).setOption(pieOption)
+        })
+        .catch((err) => {
+          globalProperties.$message.error('初始化图表失败')
+        })
     }
     return {
       initEchart,
@@ -71,7 +75,7 @@ export default defineComponent({
       }
     }
   }
-  #container {
+  #left-pie-container {
     width: 100%;
     height: 180px;
   }

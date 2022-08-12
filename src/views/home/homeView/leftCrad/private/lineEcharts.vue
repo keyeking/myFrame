@@ -15,18 +15,42 @@
           ></el-button>
         </div>
       </template>
-      <div class="container"></div>
+      <div id="left-line-container"></div>
     </el-card>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import lineOption from '../data/lineData'
+import { defineComponent, getCurrentInstance, onMounted, reactive } from 'vue'
+export default defineComponent({
   name: 'lineEcharts',
   setup() {
+    const {
+      appContext: {
+        config: { globalProperties },
+      },
+    } = getCurrentInstance() as any
+    onMounted(() => {
+      initEchart()
+    })
+    const initEchart = () => {
+      return new Promise<HTMLElement | null>((resolve, reject) => {
+        const container: HTMLElement | null = document.getElementById(
+          'left-line-container',
+        )
+        resolve(container)
+      })
+        .then((container: HTMLElement | null) => {
+          globalProperties.$echarts.init(container).setOption(lineOption)
+        })
+        .catch((err) => {
+          globalProperties.$message.error('初始化图表失败')
+        })
+    }
     return {}
   },
-}
+})
 </script>
 
 <style lang="less" scoped>
@@ -49,7 +73,7 @@ export default {
       }
     }
   }
-  .container {
+  #left-line-container {
     width: 100%;
     height: 180px;
   }

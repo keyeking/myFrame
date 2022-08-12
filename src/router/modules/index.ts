@@ -4,7 +4,6 @@ const files: __WebpackModuleApi.RequireContext = require.context(
   true,
   /\.ts$/,
 )
-
 let modulesRouter: any = []
 files.keys().forEach((key) => {
   if (key === './index.ts') return
